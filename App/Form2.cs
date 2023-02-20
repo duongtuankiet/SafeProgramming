@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -59,60 +60,71 @@ namespace Buoi2_LapTrinhAnToan
             HashAlgorithm x2 = HashAlgorithm.Create("SHA512");
             byte[] y = x2.ComputeHash(x);
             string hashcode = "";
-            foreach (byte x_byte in y)
-            {
-                string hex = x_byte.ToString("X2");
-                hashcode += hex;
-            }
-            string hashcode2 = "";
-            Encoding encoding = Encoding.UTF8;
-            string filename = "C:\\Users\\ROG\\Desktop\\data.csv";
-            string ten = "";
-            string pas = "";
-            string n = "";
-            Boolean found = false;
-            if (File.Exists(filename))
-            {
-                FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.ReadWrite, FileShare.Read);
-                int Bufr = (int)fs.Length;
-                byte[] buf = new byte[Bufr];
-                int numberread = fs.Read(buf, 0, Bufr);
-                fs.Close();
-                n = encoding.GetString(buf, 0, numberread);
-                string[] data = n.Split('\n');
-                for (int i = 0; i < data.Length; i++)
-                {
-                    if (data[i].Trim() == "") { continue; }
-                    string[] data2 = data[i].Split('|');
-                    ten = data2[0];
-                    hashcode2 = data2[1];
-                    if ((hashcode == hashcode2) && (ten.Trim() == hoten.Trim()))
-                    {
-                        found = true;
-                        break;
-                    }
+            //foreach (byte x_byte in y)
+            //{
+            //    string hex = x_byte.ToString("X2");
+            //    hashcode += hex;
+            //}
+            hashcode = BitConverter.ToString(y);
+            //string hashcode2 = "";
+            //Encoding encoding = Encoding.UTF8;
+            //string filename = "C:\\Users\\SV\\Desktop\\data.csv";
+            //string ten = "";
+            //string pas = "";
+            //string n = "";
+            //Boolean found = false;
+            //if (File.Exists(filename))
+            //{
+            //    FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.ReadWrite, FileShare.Read);
+            //    int Bufr = (int)fs.Length;
+            //    byte[] buf = new byte[Bufr];
+            //    int numberread = fs.Read(buf, 0, Bufr);
+            //    fs.Close();
+            //    n = encoding.GetString(buf, 0, numberread);
+            //    string[] data = n.Split('\n');
+            //    for (int i = 0; i < data.Length; i++)
+            //    {
+            //        if (data[i].Trim() == "") { continue; }
+            //        string[] data2 = data[i].Split('|');
+            //        ten = data2[0];
+            //        hashcode2 = data2[1];
+            //        if ((hashcode == hashcode2) && (ten.Trim() == hoten.Trim()))
+            //        {
+            //            found = true;
+            //            break;
+            //        }
 
-                }
-                if (found)
-                {
-                    //hien thong bao bang messagebox khi thanh cong
-                    string message = "Login thành công";
-                    string title = "Thông báo";
-                    MessageBox.Show(message, title);
-                    Form3 f = new Form3();
-                    f.Show();
-                    this.Hide();
-                }
+            //    }
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = App.Properties.Settings.Default.connectionstring;
+            con.Open();
+            SqlCommand cmd = new SqlCommand();
+            SqlCommand cmd2 = new SqlCommand();
+            cmd.Connection = con;
+            cmd2.Connection = con;
+            string sql = "select username from users where username = '" + hoten + "' and password ='" + hashcode + "'";
+            cmd.CommandText = sql;
+            var reader = cmd.ExecuteReader();
+            if (reader.HasRows)
+            {
+                string message = "Đăng nhập thành công";
+                string title = "Thông báo";
+                MessageBox.Show(message, title);
+                Form3 f = new Form3();
+                f.Show();
+                this.Hide();
+            }
                 else
                 {
                     //hien thong bao bang messagebox khi that bai
-                    string message = "Login không thành công";
+                    string message = "Đăng nhập không thành công";
                     string title = "Thông báo";
                     MessageBox.Show(message, title);
                 }
             }
        
-        }
+        
+
 
         private void button1_Click(object sender, EventArgs e)
         {

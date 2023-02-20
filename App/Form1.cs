@@ -9,6 +9,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace Buoi2_LapTrinhAnToan
 {
@@ -24,6 +25,7 @@ namespace Buoi2_LapTrinhAnToan
          
             string hoten = textBox1.Text;
             string pass = textBox2.Text;
+            string email = textBox3.Text;
             //ham kiem tra username va pass co null khong , neu co thi restart app
             if (hoten == "" || pass == "")
             {
@@ -33,53 +35,73 @@ namespace Buoi2_LapTrinhAnToan
                 Application.Restart();
             }
             else
-            {   //ham nay de generate pass ra ma sha512
-                string siuu = "";
-                byte[] x = Encoding.Default.GetBytes(pass);
-                HashAlgorithm x2 = HashAlgorithm.Create("SHA512");
-                byte[] y = x2.ComputeHash(x);
-                foreach (byte x_byte in y)
-                {
-                    string hex = x_byte.ToString("X2");
-                    siuu += hex;
-                }
+            {  
+                string psw = hashcode(pass, "SHA512");
                 //ham nay dung de luu username va passwd vao file csv, code theo thay Lam 
-                if (siuu != "")
+                if (psw != "")
                 {
-                    SaveFileDialog s1 = new SaveFileDialog();
-                    s1.Filter = "CSV Macintosh|*.csv|All files|*.*";
-                    s1.FilterIndex = 1;
-                    s1.Title = "Save a user file";
-                    s1.ShowDialog();
-                    if (s1.FileName != "")
+                    //SaveFileDialog s1 = new SaveFileDialog();
+                    //s1.Filter = "CSV Macintosh|*.csv|All files|*.*";
+                    //s1.FilterIndex = 1;
+                    //s1.Title = "Save a user file";
+                    //s1.ShowDialog();
+                    //if (s1.FileName != "")
+                    //{
+                    //    FileStream fs;
+                    //    String filename = s1.FileName;
+                    //    if (File.Exists(filename))
+                    //    {
+                    //        fs = new FileStream(filename, FileMode.Append, FileAccess.Write, FileShare.Write);
+                    //    }
+                    //    else
+                    //    {
+                    //        fs = new FileStream(filename, FileMode.Create, FileAccess.Write, FileShare.Write);
+                    //    }
+                    //    Encoding encoding = Encoding.UTF8;
+                    //    string chuoi = textBox1.Text.Trim() + "|" + psw.Trim() + "\n";
+                    //    byte[] bytes = encoding.GetBytes(chuoi);
+                    //    fs.Write(bytes, 0, bytes.Length);
+                    //    fs.Close();
+                    //    textBox1.Text = "";
+                    //    textBox2.Text = "";
+                    //    string message = "Đăng ký thành công";
+                    //    string title = "Thông báo";
+                    //    MessageBox.Show(message, title);
+                    //    Form2 f = new Form2();
+                    //    f.Show();
+                    //    this.Hide();
+                    //}
+                    //else
+                    //{
+                    //    string message = "Đăng ký không thành công";
+                    //    string title = "Thông báo";
+                    //    MessageBox.Show(message, title);
+                    //}
+                    //ham nay de luu username vao database
+                    SqlConnection con = new SqlConnection();
+                    con.ConnectionString = App.Properties.Settings.Default.connectionstring;
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand();
+                    SqlCommand cmd2 = new SqlCommand();
+                    cmd.Connection = con;
+                    cmd2.Connection = con;
+                    string sql = "select username from users where username = '" + hoten + "'";
+                    cmd.CommandText = sql;
+                    var reader = cmd.ExecuteReader();
+                    if (reader.HasRows)
                     {
-                        FileStream fs;
-                        String filename = s1.FileName;
-                        if (File.Exists(filename))
-                        {
-                            fs = new FileStream(filename, FileMode.Append, FileAccess.Write, FileShare.Write);
-                        }
-                        else
-                        {
-                            fs = new FileStream(filename, FileMode.Create, FileAccess.Write, FileShare.Write);
-                        }
-                        Encoding encoding = Encoding.UTF8;
-                        string chuoi = textBox1.Text.Trim() + "|" + siuu.Trim() + "\n";
-                        byte[] bytes = encoding.GetBytes(chuoi);
-                        fs.Write(bytes, 0, bytes.Length);
-                        fs.Close();
-                        textBox1.Text = "";
-                        textBox2.Text = "";
-                        string message = "Đăng ký thành công";
+                        string message = "user " + hoten + " đã tồn tại";
                         string title = "Thông báo";
                         MessageBox.Show(message, title);
-                        Form2 f = new Form2();
-                        f.Show();
-                        this.Hide();
                     }
                     else
                     {
-                        string message = "Đăng ký không thành công";
+                        con.Close();
+                        con.Open();
+                        sql = "INSERT INTO users (Username, Password, Email) VALUES ('" + hoten + "', '" + psw + "', '" + email + "')";
+                        cmd2.CommandText = sql;
+                        cmd2.ExecuteNonQuery();
+                        string message = "Đăng ký thành công";
                         string title = "Thông báo";
                         MessageBox.Show(message, title);
                     }
@@ -92,7 +114,16 @@ namespace Buoi2_LapTrinhAnToan
                 }
             }
         }
-
+        //ham nay de generate pass ra ma sha512
+        private string hashcode(string mess, string algo)
+        {
+            string hashcode = "";
+            byte[] x = Encoding.Default.GetBytes(mess);
+            HashAlgorithm x2 = HashAlgorithm.Create(algo);
+            byte[] y = x2.ComputeHash(x);
+            hashcode = BitConverter.ToString(y);
+            return hashcode;
+        }
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             //khi minh an vao show thi se show ki tu cua password
