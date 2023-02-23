@@ -85,7 +85,7 @@ namespace Buoi2_LapTrinhAnToan
                     SqlCommand cmd2 = new SqlCommand();
                     cmd.Connection = con;
                     cmd2.Connection = con;
-                    string sql = "select username from users where username = '" + hoten + "'";
+                    string sql = "select uname from users where uname = '" + hoten + "'";
                     cmd.CommandText = sql;
                     var reader = cmd.ExecuteReader();
                     if (reader.HasRows)
@@ -98,7 +98,7 @@ namespace Buoi2_LapTrinhAnToan
                     {
                         con.Close();
                         con.Open();
-                        sql = "INSERT INTO users (Username, Password, Email) VALUES ('" + hoten + "', '" + psw + "', '" + email + "')";
+                        sql = "INSERT INTO users (uname, passwd, email) VALUES ('" + hoten + "', '" + psw + "', '" + email + "')";
                         cmd2.CommandText = sql;
                         cmd2.ExecuteNonQuery();
                         string message = "Đăng ký thành công";

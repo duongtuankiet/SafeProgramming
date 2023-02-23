@@ -102,7 +102,7 @@ namespace Buoi2_LapTrinhAnToan
             SqlCommand cmd2 = new SqlCommand();
             cmd.Connection = con;
             cmd2.Connection = con;
-            string sql = "select username from users where username = '" + hoten + "' and password ='" + hashcode + "'";
+            string sql = "select uname from users where uname = '" + hoten + "' and passwd ='" + hashcode + "'";
             cmd.CommandText = sql;
             var reader = cmd.ExecuteReader();
             if (reader.HasRows)
