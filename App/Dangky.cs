@@ -13,9 +13,9 @@ using System.Data.SqlClient;
 
 namespace Buoi2_LapTrinhAnToan
 {
-    public partial class Form1 : Form
+    public partial class Dangky : Form
     {
-        public Form1()
+        public Dangky()
         {
             InitializeComponent();
         }
@@ -25,18 +25,18 @@ namespace Buoi2_LapTrinhAnToan
          
             string hoten = textBox1.Text;
             string pass = textBox2.Text;
-            string email = textBox3.Text;
+            string role = comboBox1.Text;
+            
             //ham kiem tra username va pass co null khong , neu co thi restart app
-            if (hoten == "" || pass == "")
+            if (hoten == "" || pass == "" || (role != "admin" && role != "giao vien" && role!= "hoc sinh"))
             {
                 string message = "Đăng ký không thành công";
                 string title = "Thông báo";
                 MessageBox.Show(message, title);
-                Application.Restart();
             }
             else
             {  
-                string psw = hashcode(pass, "SHA512");
+                string psw = hashstring(pass, "SHA512");
                 //ham nay dung de luu username va passwd vao file csv, code theo thay Lam 
                 if (psw != "")
                 {
@@ -85,7 +85,7 @@ namespace Buoi2_LapTrinhAnToan
                     SqlCommand cmd2 = new SqlCommand();
                     cmd.Connection = con;
                     cmd2.Connection = con;
-                    string sql = "select uname from users where uname = '" + hoten + "'";
+                    string sql = "select username from users where username = '" + hoten + "'";
                     cmd.CommandText = sql;
                     var reader = cmd.ExecuteReader();
                     if (reader.HasRows)
@@ -98,7 +98,7 @@ namespace Buoi2_LapTrinhAnToan
                     {
                         con.Close();
                         con.Open();
-                        sql = "INSERT INTO users (uname, passwd, email) VALUES ('" + hoten + "', '" + psw + "', '" + email + "')";
+                        sql = "INSERT INTO users (username, password, role) VALUES ('" + hoten + "', '" + psw + "','" + role + "')";
                         cmd2.CommandText = sql;
                         cmd2.ExecuteNonQuery();
                         string message = "Đăng ký thành công";
@@ -115,7 +115,7 @@ namespace Buoi2_LapTrinhAnToan
             }
         }
         //ham nay de generate pass ra ma sha512
-        private string hashcode(string mess, string algo)
+        public string hashstring(string mess, string algo)
         {
             string hashcode = "";
             byte[] x = Encoding.Default.GetBytes(mess);
@@ -153,12 +153,52 @@ namespace Buoi2_LapTrinhAnToan
         private void button1_Click(object sender, EventArgs e)
         {
             //cai nay chuyen huong sang trang login
-            Form2 f = new Form2();
+            Dangnhap f = new Dangnhap();
             f.Show();
             this.Hide();
         }
 
         private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void richTextBox1_TextChanged_1(object sender, EventArgs e)
         {
 
         }

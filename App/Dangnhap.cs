@@ -1,4 +1,5 @@
-﻿using System;
+﻿using App;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,9 +14,9 @@ using System.Windows.Forms;
 
 namespace Buoi2_LapTrinhAnToan
 {
-    public partial class Form2 : Form
+    public partial class Dangnhap : Form
     {
-        public Form2()
+        public Dangnhap()
         {
             InitializeComponent();
         }
@@ -50,22 +51,26 @@ namespace Buoi2_LapTrinhAnToan
             textBox2.Refresh();
 
         }
-
+        public string hashstring(string mess, string algo)
+        {
+            string hashcode = "";
+            byte[] x = Encoding.Default.GetBytes(mess);
+            HashAlgorithm x2 = HashAlgorithm.Create(algo);
+            byte[] y = x2.ComputeHash(x);
+            hashcode = BitConverter.ToString(y);
+            return hashcode;
+        }
         private void bgen_Click(object sender, EventArgs e)
         {
             //ham nay de lay du lieu tu file va so sanh voi du lieu nhap vao, code theo thay Lam
             string hoten = textBox1.Text;
             string pass = textBox2.Text;
-            byte[] x = Encoding.Default.GetBytes(pass);
-            HashAlgorithm x2 = HashAlgorithm.Create("SHA512");
-            byte[] y = x2.ComputeHash(x);
-            string hashcode = "";
             //foreach (byte x_byte in y)
             //{
             //    string hex = x_byte.ToString("X2");
             //    hashcode += hex;
             //}
-            hashcode = BitConverter.ToString(y);
+            string hashcode = hashstring(pass, "SHA512");
             //string hashcode2 = "";
             //Encoding encoding = Encoding.UTF8;
             //string filename = "C:\\Users\\SV\\Desktop\\data.csv";
@@ -99,37 +104,36 @@ namespace Buoi2_LapTrinhAnToan
             con.ConnectionString = App.Properties.Settings.Default.connectionstring;
             con.Open();
             SqlCommand cmd = new SqlCommand();
-            SqlCommand cmd2 = new SqlCommand();
             cmd.Connection = con;
-            cmd2.Connection = con;
-            string sql = "select uname from users where uname = '" + hoten + "' and passwd ='" + hashcode + "'";
+            cmd.Parameters.Add("@hoten", SqlDbType.NVarChar, 200).Value = hoten;
+            cmd.Parameters.Add("@hashcode", SqlDbType.NVarChar, 200).Value = hashcode;
+            string sql = "select role from users where username = @hoten and password = @hashcode ";
             cmd.CommandText = sql;
+            cmd.Prepare();
             var reader = cmd.ExecuteReader();
             if (reader.HasRows)
             {
+                reader.Read();
+                string s = (string)reader["role"];
                 string message = "Đăng nhập thành công";
                 string title = "Thông báo";
                 MessageBox.Show(message, title);
-                Form3 f = new Form3();
+                MainForm f = new MainForm(s);
                 f.Show();
                 this.Hide();
             }
-                else
-                {
-                    //hien thong bao bang messagebox khi that bai
-                    string message = "Đăng nhập không thành công";
-                    string title = "Thông báo";
-                    MessageBox.Show(message, title);
-                }
+            else
+            {
+                //hien thong bao bang messagebox khi that bai
+                string message = "Đăng nhập không thành công";
+                string title = "Thông báo";
+                MessageBox.Show(message, title);
             }
-       
-        
-
-
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             //chuyen huong sang form register 
-            Form1 f = new Form1();
+            Dangky f = new Dangky();
             f.Show();
             this.Hide();
         }
