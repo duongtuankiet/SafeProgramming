@@ -17,7 +17,7 @@ namespace Buoi2_LapTrinhAnToan
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm("admin"));
+            Application.Run(new Dangnhap());
         }
     }
 }

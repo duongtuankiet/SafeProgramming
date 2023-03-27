@@ -98,10 +98,10 @@ namespace App
                 DataRow row = dataTable.Rows[index];
                 macauhoi.Text = giaima(row["macauhoi"].ToString());
                 cauhoi.Text = giaima(row["cauhoi"].ToString());
-                string a = giaima(row["dapandung"].ToString());
-                string b = giaima(row["dapan1"].ToString());
-                string c = giaima(row["dapan2"].ToString());
-                string d = giaima(row["dapan3"].ToString());
+                string a = giaima(row["dapan1"].ToString());
+                string b = giaima(row["dapan2"].ToString());
+                string c = giaima(row["dapan3"].ToString());
+                string d = giaima(row["dapan4"].ToString());
                 textBoxA.Text = a;
                 textBoxB.Text = b;
                 textBoxC.Text = c;

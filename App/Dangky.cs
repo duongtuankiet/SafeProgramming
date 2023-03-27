@@ -202,6 +202,11 @@ namespace Buoi2_LapTrinhAnToan
         {
 
         }
+
+        private void Dangky_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

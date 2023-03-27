@@ -152,5 +152,17 @@ namespace App
             XemSuadethi x = new XemSuadethi();
             x.ShowDialog();
         }
+
+        private void thiCơSởDữLiệuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Thi th = new Thi();
+            th.ShowDialog();
+        }
+
+        private void đềThiCơSởDữLiệuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SoanDethi form = new SoanDethi();
+            form.Show();
+        }
     }
 }

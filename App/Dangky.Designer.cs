@@ -175,7 +175,7 @@
             this.comboBox1.TabIndex = 20;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // Form1
+            // Dangky
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -196,8 +196,9 @@
             this.Controls.Add(this.richTextBox1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "Form1";
+            this.Name = "Dangky";
             this.Text = "Register Form";
+            this.Load += new System.EventHandler(this.Dangky_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

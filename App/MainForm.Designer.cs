@@ -126,6 +126,7 @@
             this.đềThiCơSởDữLiệuToolStripMenuItem.Name = "đềThiCơSởDữLiệuToolStripMenuItem";
             this.đềThiCơSởDữLiệuToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.đềThiCơSởDữLiệuToolStripMenuItem.Text = "Đề thi Cơ sở dữ liệu";
+            this.đềThiCơSởDữLiệuToolStripMenuItem.Click += new System.EventHandler(this.đềThiCơSởDữLiệuToolStripMenuItem_Click);
             // 
             // viewMenu
             // 
@@ -148,6 +149,7 @@
             this.thiCơSởDữLiệuToolStripMenuItem.Name = "thiCơSởDữLiệuToolStripMenuItem";
             this.thiCơSởDữLiệuToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.thiCơSởDữLiệuToolStripMenuItem.Text = "Thi Cơ sở dữ liệu";
+            this.thiCơSởDữLiệuToolStripMenuItem.Click += new System.EventHandler(this.thiCơSởDữLiệuToolStripMenuItem_Click);
             // 
             // toolsMenu
             // 

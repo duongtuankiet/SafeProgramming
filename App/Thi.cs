@@ -59,7 +59,7 @@ namespace App
             SqlConnection con = new SqlConnection();
             con.ConnectionString = App.Properties.Settings.Default.connectionstring;
             con.Open();
-            string query = "SELECT * FROM Dethi";
+            string query = "SELECT TOP (10) [macauhoi] ,[dapandung] ,[dapan1] ,[dapan2] ,[dapan3] ,[cauhoi] ,[dapan4] FROM [tracnghiem].[dbo].[Dethi] order by NEWID()";
             SqlDataAdapter adapter = new SqlDataAdapter(query, con);
             dataTable = new DataTable();
             adapter.Fill(dataTable);
