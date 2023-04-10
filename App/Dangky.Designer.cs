@@ -52,7 +52,6 @@
             this.label1.Size = new System.Drawing.Size(100, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Tên người dùng";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -64,7 +63,6 @@
             this.label2.Size = new System.Drawing.Size(61, 16);
             this.label2.TabIndex = 1;
             this.label2.Text = "Mật khẩu";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label6
             // 
@@ -79,7 +77,6 @@
             this.label6.Size = new System.Drawing.Size(84, 25);
             this.label6.TabIndex = 5;
             this.label6.Text = "Đăng ký";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // textBox1
             // 
@@ -88,7 +85,6 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(246, 22);
             this.textBox1.TabIndex = 6;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // checkBox1
             // 
@@ -135,7 +131,7 @@
             this.textBox2.PasswordChar = '*';
             this.textBox2.Size = new System.Drawing.Size(246, 22);
             this.textBox2.TabIndex = 15;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+
             // 
             // label5
             // 
@@ -147,7 +143,7 @@
             this.label5.Size = new System.Drawing.Size(45, 16);
             this.label5.TabIndex = 18;
             this.label5.Text = "Vai trò";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
+
             // 
             // richTextBox1
             // 
@@ -160,7 +156,7 @@
             this.richTextBox1.Size = new System.Drawing.Size(527, 284);
             this.richTextBox1.TabIndex = 19;
             this.richTextBox1.Text = "";
-            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged_1);
+
             // 
             // comboBox1
             // 
@@ -173,7 +169,6 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 24);
             this.comboBox1.TabIndex = 20;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // Dangky
             // 
@@ -195,10 +190,10 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.richTextBox1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
+            this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Dangky";
             this.Text = "Register Form";
-            this.Load += new System.EventHandler(this.Dangky_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

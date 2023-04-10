@@ -140,14 +140,14 @@
             // thiHêĐiềuHànhToolStripMenuItem
             // 
             this.thiHêĐiềuHànhToolStripMenuItem.Name = "thiHêĐiềuHànhToolStripMenuItem";
-            this.thiHêĐiềuHànhToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.thiHêĐiềuHànhToolStripMenuItem.Size = new System.Drawing.Size(204, 26);
             this.thiHêĐiềuHànhToolStripMenuItem.Text = "Thi Hê điều hành";
             this.thiHêĐiềuHànhToolStripMenuItem.Click += new System.EventHandler(this.thiHêĐiềuHànhToolStripMenuItem_Click);
             // 
             // thiCơSởDữLiệuToolStripMenuItem
             // 
             this.thiCơSởDữLiệuToolStripMenuItem.Name = "thiCơSởDữLiệuToolStripMenuItem";
-            this.thiCơSởDữLiệuToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.thiCơSởDữLiệuToolStripMenuItem.Size = new System.Drawing.Size(204, 26);
             this.thiCơSởDữLiệuToolStripMenuItem.Text = "Thi Cơ sở dữ liệu";
             this.thiCơSởDữLiệuToolStripMenuItem.Click += new System.EventHandler(this.thiCơSởDữLiệuToolStripMenuItem_Click);
             // 
@@ -162,7 +162,7 @@
             // xemĐềToolStripMenuItem
             // 
             this.xemĐềToolStripMenuItem.Name = "xemĐềToolStripMenuItem";
-            this.xemĐềToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.xemĐềToolStripMenuItem.Size = new System.Drawing.Size(143, 26);
             this.xemĐềToolStripMenuItem.Text = "Xem đề";
             this.xemĐềToolStripMenuItem.Click += new System.EventHandler(this.xemĐềToolStripMenuItem_Click);
             // 
@@ -194,6 +194,7 @@
             this.ClientSize = new System.Drawing.Size(843, 558);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip);
+            this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;

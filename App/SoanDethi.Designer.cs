@@ -103,7 +103,6 @@
             this.textBoxA.Name = "textBoxA";
             this.textBoxA.Size = new System.Drawing.Size(477, 22);
             this.textBoxA.TabIndex = 4;
-            this.textBoxA.TextChanged += new System.EventHandler(this.textBoxA_TextChanged);
             // 
             // textBoxB
             // 
@@ -112,7 +111,6 @@
             this.textBoxB.Name = "textBoxB";
             this.textBoxB.Size = new System.Drawing.Size(477, 22);
             this.textBoxB.TabIndex = 5;
-            this.textBoxB.TextChanged += new System.EventHandler(this.textBoxB_TextChanged);
             // 
             // textBoxC
             // 
@@ -121,7 +119,6 @@
             this.textBoxC.Name = "textBoxC";
             this.textBoxC.Size = new System.Drawing.Size(477, 22);
             this.textBoxC.TabIndex = 6;
-            this.textBoxC.TextChanged += new System.EventHandler(this.textBoxC_TextChanged);
             // 
             // textBoxD
             // 
@@ -130,7 +127,6 @@
             this.textBoxD.Name = "textBoxD";
             this.textBoxD.Size = new System.Drawing.Size(477, 22);
             this.textBoxD.TabIndex = 7;
-            this.textBoxD.TextChanged += new System.EventHandler(this.textBoxD_TextChanged);
             // 
             // cauhoi
             // 
@@ -140,7 +136,6 @@
             this.cauhoi.Size = new System.Drawing.Size(552, 117);
             this.cauhoi.TabIndex = 8;
             this.cauhoi.Text = "";
-            this.cauhoi.TextChanged += new System.EventHandler(this.cauhoi_TextChanged);
             // 
             // label1
             // 
@@ -152,7 +147,7 @@
             this.label1.Size = new System.Drawing.Size(107, 31);
             this.label1.TabIndex = 9;
             this.label1.Text = "Câu hỏi";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+
             // 
             // label2
             // 
@@ -164,7 +159,7 @@
             this.label2.Size = new System.Drawing.Size(101, 31);
             this.label2.TabIndex = 10;
             this.label2.Text = "Đáp án";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+
             // 
             // button2
             // 
@@ -184,7 +179,7 @@
             this.macauhoi.Name = "macauhoi";
             this.macauhoi.Size = new System.Drawing.Size(100, 22);
             this.macauhoi.TabIndex = 13;
-            this.macauhoi.TextChanged += new System.EventHandler(this.macauhoi_TextChanged);
+
             // 
             // label3
             // 
@@ -196,7 +191,6 @@
             this.label3.Size = new System.Drawing.Size(77, 25);
             this.label3.TabIndex = 14;
             this.label3.Text = "Mã câu";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // SoanDethi
             // 
@@ -217,10 +211,10 @@
             this.Controls.Add(this.checkBoxC);
             this.Controls.Add(this.checkBoxB);
             this.Controls.Add(this.checkBoxA);
+            this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "SoanDethi";
             this.Text = "Soạn đề thi";
-            this.Load += new System.EventHandler(this.SoanDethi_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

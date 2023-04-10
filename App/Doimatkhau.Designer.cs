@@ -165,7 +165,7 @@
             this.textBox3.Size = new System.Drawing.Size(246, 22);
             this.textBox3.TabIndex = 33;
             // 
-            // doimatkhau
+            // Doimatkhau
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -182,7 +182,8 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "doimatkhau";
+            this.DoubleBuffered = true;
+            this.Name = "Doimatkhau";
             this.Text = "doimatkhau";
             this.ResumeLayout(false);
             this.PerformLayout();

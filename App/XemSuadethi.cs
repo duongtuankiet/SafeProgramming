@@ -10,11 +10,13 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ThuVienHam;
 
 namespace App
 {
     public partial class XemSuadethi : Form
     {
+        Thuvien tv = new Thuvien();
         private DataTable dataTable;
         private int currentIndex;
         public XemSuadethi()
@@ -34,74 +36,17 @@ namespace App
             currentIndex = 0;
             ShowRecord(currentIndex);
         }
-        public string giaima(string s)
-        {
-            string password = "meo meo";
-            SHA256 mySha256 = SHA256Managed.Create();
-            byte[] key = mySha256.ComputeHash(Encoding.ASCII.GetBytes(password));
-            byte[] iv = new byte[16] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-            string mess = s;
-            string mahoa = DecryptString(mess, key, iv);
-            return mahoa;
-        }
-        public string EncryptString(string plaintext, byte[] key, byte[] iv)
-        {
-            Aes encryptor = Aes.Create();
-            encryptor.Mode = CipherMode.CBC;
-            encryptor.Key = key;
-            encryptor.IV = iv;
-            MemoryStream memorystream = new MemoryStream();
-            ICryptoTransform aesEncryptor = encryptor.CreateEncryptor();
-            CryptoStream cryptoStream = new CryptoStream(memorystream, aesEncryptor, CryptoStreamMode.Write);
-            byte[] plainbytes = Encoding.ASCII.GetBytes(plaintext);
-            cryptoStream.Write(plainbytes, 0, plainbytes.Length);
-            cryptoStream.FlushFinalBlock();
-            byte[] cipherbytes = memorystream.ToArray();
-            memorystream.Close();
-            cryptoStream.Close();
-            string ciphertext = Convert.ToBase64String(cipherbytes, 0, cipherbytes.Length);
-            return ciphertext;
-        }
-        public string mahoa(string s)
-        {
-            string password = "meo meo";
-            SHA256 mySha256 = SHA256Managed.Create();
-            byte[] key = mySha256.ComputeHash(Encoding.ASCII.GetBytes(password));
-            byte[] iv = new byte[16] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-            string mess = s;
-            string mahoa = EncryptString(mess, key, iv);
-            return mahoa;
-        }
-        public string DecryptString(string ciphertext, byte[] key, byte[] iv)
-        {
-            Aes encryptor = Aes.Create();
-            encryptor.Mode = CipherMode.CBC;
-            encryptor.Key = key;
-            encryptor.IV = iv;
-            MemoryStream memorystream = new MemoryStream();
-            ICryptoTransform aesDecryptor = encryptor.CreateDecryptor();
-            CryptoStream cryptoStream = new CryptoStream(memorystream, aesDecryptor, CryptoStreamMode.Write);
-            string plaintext = String.Empty;
-            byte[] cipherbyte = Convert.FromBase64String(ciphertext);
-            cryptoStream.Write(cipherbyte, 0, cipherbyte.Length);
-            cryptoStream.FlushFinalBlock();
-            byte[] plainbytes = memorystream.ToArray();
-            plaintext = Encoding.ASCII.GetString(plainbytes, 0, plainbytes.Length);
-            memorystream.Close();
-            cryptoStream.Close();
-            return plaintext;
-        }
         private void ShowRecord(int index)
         {
             if (dataTable.Rows.Count > 0)
             {
                 DataRow row = dataTable.Rows[index];
-                macauhoi.Text = giaima(row["macauhoi"].ToString());
-                cauhoi.Text = giaima(row["cauhoi"].ToString());
-                string a = giaima(row["dapan1"].ToString());
-                string b = giaima(row["dapan2"].ToString());
-                string c = giaima(row["dapan3"].ToString());
-                string d = giaima(row["dapan4"].ToString());
+                macauhoi.Text = tv.giaima(row["macauhoi"].ToString());
+                cauhoi.Text = tv.giaima(row["cauhoi"].ToString());
+                string a = tv.giaima(row["dapan1"].ToString());
+                string b = tv.giaima(row["dapan2"].ToString());
+                string c = tv.giaima(row["dapan3"].ToString());
+                string d = tv.giaima(row["dapan4"].ToString());
                 textBoxA.Text = a;
                 textBoxB.Text = b;
                 textBoxC.Text = c;
@@ -184,7 +129,7 @@ namespace App
             SqlConnection con = new SqlConnection();
             con.ConnectionString = App.Properties.Settings.Default.connectionstring;
             con.Open();
-            SqlCommand command = new SqlCommand("select * from Dethi where macauhoi = '" + mahoa(maCauHoi) + "' ", con);
+            SqlCommand command = new SqlCommand("select * from Dethi where macauhoi = '" + tv.mahoa(maCauHoi) + "' ", con);
             var reader = command.ExecuteReader();
             if (reader.HasRows)
             {
@@ -192,13 +137,13 @@ namespace App
                 con.Open();
                 
                 SqlCommand cmand = new SqlCommand("UPDATE Dethi SET macauhoi = @MaCauHoi, cauhoi = @CauHoi, dapan1 = @DapAn1, dapan2 = @DapAn2, dapan3 = @DapAn3, dapan4 = @DapAn4, dapandung = @DapAnDung WHERE macauhoi = @MaCauHoi" , con);
-                cmand.Parameters.AddWithValue("@CauHoi", mahoa(cauHoi));
-                cmand.Parameters.AddWithValue("@DapAn1", mahoa(dapAn1));
-                cmand.Parameters.AddWithValue("@DapAn2", mahoa(dapAn2));
-                cmand.Parameters.AddWithValue("@DapAn3", mahoa(dapAn3));
-                cmand.Parameters.AddWithValue("@DapAn4", mahoa(dapAn4));
-                cmand.Parameters.AddWithValue("@DapAnDung", mahoa(dapAnDung));
-                cmand.Parameters.AddWithValue("@MaCauHoi", mahoa(maCauHoi));
+                cmand.Parameters.AddWithValue("@CauHoi", tv.mahoa(cauHoi));
+                cmand.Parameters.AddWithValue("@DapAn1", tv.mahoa(dapAn1));
+                cmand.Parameters.AddWithValue("@DapAn2", tv.mahoa(dapAn2));
+                cmand.Parameters.AddWithValue("@DapAn3", tv.mahoa(dapAn3));
+                cmand.Parameters.AddWithValue("@DapAn4", tv.mahoa(dapAn4));
+                cmand.Parameters.AddWithValue("@DapAnDung", tv.mahoa(dapAnDung));
+                cmand.Parameters.AddWithValue("@MaCauHoi", tv.mahoa(maCauHoi));
                 cmand.ExecuteNonQuery();
                 con.Close();
                 MessageBox.Show("Lưu câu hỏi thành công.");

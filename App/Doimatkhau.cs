@@ -1,19 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using ThuVienHam;
 namespace App
 {
     public partial class Doimatkhau : Form
     {
+        Thuvien tv = new Thuvien();
         public Doimatkhau()
         {
             InitializeComponent();
@@ -62,16 +55,6 @@ namespace App
         {
             this.Close();
         }
-        public string hashstring(string mess, string algo)
-        {
-            string hashcode = "";
-            byte[] x = Encoding.Default.GetBytes(mess);
-            HashAlgorithm x2 = HashAlgorithm.Create(algo);
-            byte[] y = x2.ComputeHash(x);
-            hashcode = BitConverter.ToString(y);
-            return hashcode;
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
             string username = textBox1.Text;
@@ -99,7 +82,7 @@ namespace App
                 {
                     con.Close();
                     con.Open();
-                    string hashpass = hashstring(password, "SHA512");
+                    string hashpass = tv.hashstring(password, "SHA512");
                     string sql2 = "UPDATE users SET password = '" + hashpass + "' where username = '" + username + "'";
                     cmd2.CommandText = sql2;
                     cmd2.ExecuteNonQuery();

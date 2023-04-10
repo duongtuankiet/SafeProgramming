@@ -248,6 +248,7 @@
             this.Controls.Add(this.checkBoxC);
             this.Controls.Add(this.checkBoxB);
             this.Controls.Add(this.checkBoxA);
+            this.DoubleBuffered = true;
             this.Name = "Thi";
             this.Text = "Thi";
             this.Load += new System.EventHandler(this.Thi_Load);
