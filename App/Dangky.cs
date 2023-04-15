@@ -17,6 +17,7 @@ namespace Buoi2_LapTrinhAnToan
             string hoten = textBox1.Text;
             string pass = textBox2.Text;
             string role = comboBox1.Text;
+            string flag = "0";
             
             //ham kiem tra username va pass co null khong , neu co thi restart app
             if (hoten == "" || pass == "" || (role != "admin" && role != "giao vien" && role!= "hoc sinh"))
@@ -27,7 +28,7 @@ namespace Buoi2_LapTrinhAnToan
             }
             else
             {  
-                string psw = tv.hashstring(pass, "SHA512");
+                string psw = tv.mahoa(tv.hashstring(pass, "SHA512"));
                 //ham nay dung de luu username va passwd vao file csv, code theo thay Lam 
                 if (psw != "")
                 {
@@ -43,7 +44,7 @@ namespace Buoi2_LapTrinhAnToan
                     var reader = cmd.ExecuteReader();
                     if (reader.HasRows)
                     {
-                        string message = "user " + hoten + " đã tồn tại";
+                        string message = "Đăng ký thất bại";
                         string title = "Thông báo";
                         MessageBox.Show(message, title);
                     }
@@ -51,7 +52,7 @@ namespace Buoi2_LapTrinhAnToan
                     {
                         con.Close();
                         con.Open();
-                        sql = "INSERT INTO users (username, password, role) VALUES ('" + hoten + "', '" + psw + "','" + role + "')";
+                        sql = "INSERT INTO users (username, password, role, flag) VALUES ('" + hoten + "', '" + psw + "','" + role + "','" + flag + "')";
                         cmd2.CommandText = sql;
                         cmd2.ExecuteNonQuery();
                         string message = "Đăng ký thành công";
@@ -94,6 +95,11 @@ namespace Buoi2_LapTrinhAnToan
             Dangnhap f = new Dangnhap();
             f.Show();
             this.Hide();
+        }
+
+        private void Dangky_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

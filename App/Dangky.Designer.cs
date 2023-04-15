@@ -84,7 +84,7 @@
             this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(246, 22);
-            this.textBox1.TabIndex = 6;
+            this.textBox1.TabIndex = 1;
             // 
             // checkBox1
             // 
@@ -130,8 +130,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.PasswordChar = '*';
             this.textBox2.Size = new System.Drawing.Size(246, 22);
-            this.textBox2.TabIndex = 15;
-
+            this.textBox2.TabIndex = 2;
             // 
             // label5
             // 
@@ -143,7 +142,6 @@
             this.label5.Size = new System.Drawing.Size(45, 16);
             this.label5.TabIndex = 18;
             this.label5.Text = "Vai trò";
-
             // 
             // richTextBox1
             // 
@@ -156,7 +154,6 @@
             this.richTextBox1.Size = new System.Drawing.Size(527, 284);
             this.richTextBox1.TabIndex = 19;
             this.richTextBox1.Text = "";
-
             // 
             // comboBox1
             // 
@@ -168,10 +165,11 @@
             this.comboBox1.Location = new System.Drawing.Point(306, 264);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 24);
-            this.comboBox1.TabIndex = 20;
+            this.comboBox1.TabIndex = 3;
             // 
             // Dangky
             // 
+            this.AcceptButton = this.button2;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
@@ -193,7 +191,8 @@
             this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Dangky";
-            this.Text = "Register Form";
+            this.Text = "Đăng ký";
+            this.Load += new System.EventHandler(this.Dangky_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

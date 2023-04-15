@@ -47,6 +47,7 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.khôiPhụcTàiKhoảnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -69,6 +70,7 @@
             // 
             this.fileMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.đăngKýUserMớiToolStripMenuItem,
+            this.khôiPhụcTàiKhoảnToolStripMenuItem,
             this.đổiMậtKhẩuUserToolStripMenuItem,
             this.calculatorToolStripMenuItem,
             this.đăngXuấtToolStripMenuItem});
@@ -80,28 +82,28 @@
             // đăngKýUserMớiToolStripMenuItem
             // 
             this.đăngKýUserMớiToolStripMenuItem.Name = "đăngKýUserMớiToolStripMenuItem";
-            this.đăngKýUserMớiToolStripMenuItem.Size = new System.Drawing.Size(212, 26);
+            this.đăngKýUserMớiToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
             this.đăngKýUserMớiToolStripMenuItem.Text = "Đăng ký user mới";
             this.đăngKýUserMớiToolStripMenuItem.Click += new System.EventHandler(this.đăngKýUserMớiToolStripMenuItem_Click);
             // 
             // đổiMậtKhẩuUserToolStripMenuItem
             // 
             this.đổiMậtKhẩuUserToolStripMenuItem.Name = "đổiMậtKhẩuUserToolStripMenuItem";
-            this.đổiMậtKhẩuUserToolStripMenuItem.Size = new System.Drawing.Size(212, 26);
+            this.đổiMậtKhẩuUserToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
             this.đổiMậtKhẩuUserToolStripMenuItem.Text = "Đổi mật khẩu user";
             this.đổiMậtKhẩuUserToolStripMenuItem.Click += new System.EventHandler(this.đổiMậtKhẩuUserToolStripMenuItem_Click);
             // 
             // calculatorToolStripMenuItem
             // 
             this.calculatorToolStripMenuItem.Name = "calculatorToolStripMenuItem";
-            this.calculatorToolStripMenuItem.Size = new System.Drawing.Size(212, 26);
+            this.calculatorToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
             this.calculatorToolStripMenuItem.Text = "Calculator";
             this.calculatorToolStripMenuItem.Click += new System.EventHandler(this.calculatorToolStripMenuItem_Click);
             // 
             // đăngXuấtToolStripMenuItem
             // 
             this.đăngXuấtToolStripMenuItem.Name = "đăngXuấtToolStripMenuItem";
-            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(212, 26);
+            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
             this.đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
             this.đăngXuấtToolStripMenuItem.Click += new System.EventHandler(this.đăngXuấtToolStripMenuItem_Click);
             // 
@@ -184,6 +186,13 @@
             this.toolStripStatusLabel.Size = new System.Drawing.Size(49, 20);
             this.toolStripStatusLabel.Text = "Status";
             // 
+            // khôiPhụcTàiKhoảnToolStripMenuItem
+            // 
+            this.khôiPhụcTàiKhoảnToolStripMenuItem.Name = "khôiPhụcTàiKhoảnToolStripMenuItem";
+            this.khôiPhụcTàiKhoảnToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
+            this.khôiPhụcTàiKhoảnToolStripMenuItem.Text = "Khôi phục tài khoản ";
+            this.khôiPhụcTàiKhoảnToolStripMenuItem.Click += new System.EventHandler(this.khôiPhụcTàiKhoảnToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -200,7 +209,7 @@
             this.MainMenuStrip = this.menuStrip;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
-            this.Text = "Thi Trac nghiem he dieu hanh";
+            this.Text = "Thi trắc nghiệm hệ điều hành";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
@@ -230,6 +239,7 @@
         private System.Windows.Forms.ToolStripMenuItem đăngKýUserMớiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem đổiMậtKhẩuUserToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem calculatorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem khôiPhụcTàiKhoảnToolStripMenuItem;
     }
 }
 

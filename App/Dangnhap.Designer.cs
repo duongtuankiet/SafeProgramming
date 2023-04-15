@@ -47,7 +47,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.PasswordChar = '*';
             this.textBox2.Size = new System.Drawing.Size(243, 22);
-            this.textBox2.TabIndex = 28;
+            this.textBox2.TabIndex = 2;
             // 
             // button3
             // 
@@ -92,7 +92,7 @@
             this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(243, 22);
-            this.textBox1.TabIndex = 21;
+            this.textBox1.TabIndex = 1;
             // 
             // label6
             // 
@@ -143,6 +143,7 @@
             // 
             // Dangnhap
             // 
+            this.AcceptButton = this.bgen;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
@@ -161,7 +162,8 @@
             this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Dangnhap";
-            this.Text = "Login Form";
+            this.Text = "Đăng nhập";
+            this.Enter += new System.EventHandler(this.bgen_Click);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -89,12 +89,14 @@ namespace App
             {
                 đăngKýUserMớiToolStripMenuItem.Visible = false;
                 đổiMậtKhẩuUserToolStripMenuItem.Visible=false;
+                khôiPhụcTàiKhoảnToolStripMenuItem.Visible=false;
                 viewMenu.Visible=false;
             }
             if(logonname =="hoc sinh")
             {
                 đăngKýUserMớiToolStripMenuItem.Visible = false;
                 đổiMậtKhẩuUserToolStripMenuItem.Visible = false;
+                khôiPhụcTàiKhoảnToolStripMenuItem.Visible = false;
                 toolsMenu.Visible=false;
                 editMenu.Visible=false;
             }
@@ -127,6 +129,12 @@ namespace App
         private void đềThiCơSởDữLiệuToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SoanDethi form = new SoanDethi();
+            form.Show();
+        }
+
+        private void khôiPhụcTàiKhoảnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            khoiphuctaikhoan form = new khoiphuctaikhoan();
             form.Show();
         }
     }

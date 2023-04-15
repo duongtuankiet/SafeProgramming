@@ -239,7 +239,7 @@
             this.Controls.Add(this.checkBoxA);
             this.DoubleBuffered = true;
             this.Name = "XemSuadethi";
-            this.Text = "XemSuadethi";
+            this.Text = "Xem đề thi";
             this.Load += new System.EventHandler(this.XemSuadethi_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
