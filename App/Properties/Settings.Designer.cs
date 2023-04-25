@@ -26,7 +26,8 @@ namespace App.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=ROG-STRIX;Initial Catalog=tracnghiem;Integrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=ROG-STRIX\\SQLEXPRESS;Initial Catalog=tracnghiem;Integrated Security=T" +
+            "rue")]
         public string connectionstring {
             get {
                 return ((string)(this["connectionstring"]));

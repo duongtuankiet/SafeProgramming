@@ -1,4 +1,5 @@
 ﻿
+using App;
 using System;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -8,15 +9,18 @@ namespace Buoi2_LapTrinhAnToan
     public partial class SoanDethi : Form
     {
         Thuvien tv = new Thuvien();
-        public SoanDethi()
+        string logonname;
+        public SoanDethi(string uname)
         {
+
             InitializeComponent();
+            logonname = uname;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             //tro ve form soan de 
-           
+
         }
         private void button2_Click(object sender, EventArgs e)
         {
@@ -151,5 +155,6 @@ namespace Buoi2_LapTrinhAnToan
                 checkBoxD.Checked = false;
             }
         }
+
     }
 }

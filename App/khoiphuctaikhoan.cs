@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace App
 {
@@ -29,8 +30,10 @@ namespace App
             SqlCommand cmd2 = new SqlCommand();
             cmd.Connection = con;
             cmd2.Connection = con;
-            string sql = "select * from users where username = '" + hoten + "'";
+            string sql = "select * from users where username = @username";
             cmd.CommandText = sql;
+            cmd.Parameters.Add("@username", SqlDbType.NVarChar, 200).Value = hoten;
+            cmd.Prepare();
             var reader = cmd.ExecuteReader();
             if (reader.HasRows)
             {
@@ -38,12 +41,14 @@ namespace App
                 string flag = (string)reader["flag"];
                 if (flag == "-1") 
                 { 
-                string sql3 = "UPDATE users SET flag = '" + "0" + "' where username = '" + hoten + "'";
+                string sql3 = "UPDATE users SET flag = '" + "0" + "' where username = @username";
                 SqlCommand cmd3 = new SqlCommand();
                 cmd3.Connection = con;
                 con.Close();
                 con.Open();
                 cmd3.CommandText = sql3;
+                cmd3.Parameters.Add("@username", SqlDbType.NVarChar, 200).Value = hoten;
+                cmd3.Prepare();
                 cmd3.ExecuteNonQuery();
                 MessageBox.Show("Mở khóa thành công", "Thông báo");
                 }

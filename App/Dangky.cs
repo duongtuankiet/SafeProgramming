@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using ThuVienHam;
+using System.Data;
 
 namespace Buoi2_LapTrinhAnToan
 {
@@ -39,8 +40,10 @@ namespace Buoi2_LapTrinhAnToan
                     SqlCommand cmd2 = new SqlCommand();
                     cmd.Connection = con;
                     cmd2.Connection = con;
-                    string sql = "select username from users where username = '" + hoten + "'";
+                    string sql = "select username from users where username = @username";
                     cmd.CommandText = sql;
+                    cmd.Parameters.Add("@username", SqlDbType.NVarChar, 200).Value = hoten;
+                    cmd.Prepare();
                     var reader = cmd.ExecuteReader();
                     if (reader.HasRows)
                     {
@@ -52,8 +55,14 @@ namespace Buoi2_LapTrinhAnToan
                     {
                         con.Close();
                         con.Open();
-                        sql = "INSERT INTO users (username, password, role, flag) VALUES ('" + hoten + "', '" + psw + "','" + role + "','" + flag + "')";
+                        sql = "INSERT INTO users (username, password, role, flag) VALUES (@username, @password, @role, @flag)";
                         cmd2.CommandText = sql;
+                        
+                        cmd2.Parameters.Add("@username", SqlDbType.NVarChar, 200).Value = hoten;
+                        cmd2.Parameters.Add("@password", SqlDbType.NVarChar, 200).Value = psw;
+                        cmd2.Parameters.Add("@role", SqlDbType.NVarChar, 200).Value = role;
+                        cmd2.Parameters.Add("@flag", SqlDbType.NVarChar, 200).Value = flag;
+                        cmd2.Prepare();
                         cmd2.ExecuteNonQuery();
                         string message = "Đăng ký thành công";
                         string title = "Thông báo";

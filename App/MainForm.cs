@@ -9,10 +9,12 @@ namespace App
     {
         private int childFormNumber = 0;
         string logonname;
-        public MainForm( string loginname)
+        string groups;
+        public MainForm(string group, string uname)
         {
             InitializeComponent();
-            logonname = loginname;
+            logonname = uname;
+            groups = group;
         }
 
         private void ShowNewForm(object sender, EventArgs e)
@@ -56,7 +58,7 @@ namespace App
 
         private void đềThiHêĐiềuHànhToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SoanDethi form = new SoanDethi();
+            SoanDethi form = new SoanDethi(logonname);
             form.Show();
         }
 
@@ -82,17 +84,17 @@ namespace App
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            if(logonname == "admin")
+            if(groups == "admin")
             {
             }
-            if(logonname == "giao vien")
+            if(groups == "giao vien")
             {
                 đăngKýUserMớiToolStripMenuItem.Visible = false;
                 đổiMậtKhẩuUserToolStripMenuItem.Visible=false;
                 khôiPhụcTàiKhoảnToolStripMenuItem.Visible=false;
                 viewMenu.Visible=false;
             }
-            if(logonname =="hoc sinh")
+            if(groups =="hoc sinh")
             {
                 đăngKýUserMớiToolStripMenuItem.Visible = false;
                 đổiMậtKhẩuUserToolStripMenuItem.Visible = false;

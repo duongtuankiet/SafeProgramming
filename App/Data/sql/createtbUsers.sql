@@ -10,7 +10,7 @@ GO
 
 CREATE TABLE [dbo].[users](
 	[username] [nvarchar](200) NOT NULL,
-	[password] [nvarchar](200) NOT NULL,
+	[password] [nvarchar](2000) NOT NULL,
 	[role] [nvarchar](50) NOT NULL,
 	[flag] [nvarchar](50) NOT NULL
 ) ON [PRIMARY]

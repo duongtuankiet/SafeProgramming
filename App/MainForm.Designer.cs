@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.đăngKýUserMớiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.khôiPhụcTàiKhoảnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.đổiMậtKhẩuUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.calculatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.đăngXuấtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,11 +45,8 @@
             this.toolsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.xemĐềToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.khôiPhụcTàiKhoảnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
-            this.statusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip
@@ -62,7 +59,7 @@
             this.toolsMenu});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(843, 28);
+            this.menuStrip.Size = new System.Drawing.Size(782, 28);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "MenuStrip";
             // 
@@ -85,6 +82,13 @@
             this.đăngKýUserMớiToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
             this.đăngKýUserMớiToolStripMenuItem.Text = "Đăng ký user mới";
             this.đăngKýUserMớiToolStripMenuItem.Click += new System.EventHandler(this.đăngKýUserMớiToolStripMenuItem_Click);
+            // 
+            // khôiPhụcTàiKhoảnToolStripMenuItem
+            // 
+            this.khôiPhụcTàiKhoảnToolStripMenuItem.Name = "khôiPhụcTàiKhoảnToolStripMenuItem";
+            this.khôiPhụcTàiKhoảnToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
+            this.khôiPhụcTàiKhoảnToolStripMenuItem.Text = "Khôi phục tài khoản ";
+            this.khôiPhụcTàiKhoảnToolStripMenuItem.Click += new System.EventHandler(this.khôiPhụcTàiKhoảnToolStripMenuItem_Click);
             // 
             // đổiMậtKhẩuUserToolStripMenuItem
             // 
@@ -171,36 +175,21 @@
             // statusStrip
             // 
             this.statusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 532);
+            this.statusStrip.Location = new System.Drawing.Point(0, 483);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
-            this.statusStrip.Size = new System.Drawing.Size(843, 26);
+            this.statusStrip.Size = new System.Drawing.Size(782, 22);
             this.statusStrip.TabIndex = 2;
             this.statusStrip.Text = "StatusStrip";
-            // 
-            // toolStripStatusLabel
-            // 
-            this.toolStripStatusLabel.Name = "toolStripStatusLabel";
-            this.toolStripStatusLabel.Size = new System.Drawing.Size(49, 20);
-            this.toolStripStatusLabel.Text = "Status";
-            // 
-            // khôiPhụcTàiKhoảnToolStripMenuItem
-            // 
-            this.khôiPhụcTàiKhoảnToolStripMenuItem.Name = "khôiPhụcTàiKhoảnToolStripMenuItem";
-            this.khôiPhụcTàiKhoảnToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
-            this.khôiPhụcTàiKhoảnToolStripMenuItem.Text = "Khôi phục tài khoản ";
-            this.khôiPhụcTàiKhoảnToolStripMenuItem.Click += new System.EventHandler(this.khôiPhụcTàiKhoảnToolStripMenuItem_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackColor = System.Drawing.Color.RosyBrown;
+            this.BackgroundImage = global::App.Properties.Resources.meow;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(843, 558);
+            this.ClientSize = new System.Drawing.Size(782, 505);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip);
             this.DoubleBuffered = true;
@@ -213,8 +202,6 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
-            this.statusStrip.ResumeLayout(false);
-            this.statusStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -224,7 +211,6 @@
 
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.StatusStrip statusStrip;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
         private System.Windows.Forms.ToolStripMenuItem fileMenu;
         private System.Windows.Forms.ToolStripMenuItem editMenu;
         private System.Windows.Forms.ToolStripMenuItem viewMenu;

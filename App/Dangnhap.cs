@@ -91,11 +91,12 @@ namespace Buoi2_LapTrinhAnToan
                     else
                     {
                         string role = (string)reader1["role"];
+                        string uname = (string)reader1["username"];
                         string message = "Đăng nhập thành công";
                         string title = "Thông báo";
                         MessageBox.Show(message, title);
                         tv.ghilog("Log", "User logon : " + hoten);
-                        MainForm f = new MainForm(role);
+                        MainForm f = new MainForm(role, uname);
                         f.Show();
                         this.Hide();
                     }

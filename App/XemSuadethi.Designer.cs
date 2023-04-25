@@ -42,15 +42,16 @@
             this.checkBoxC = new System.Windows.Forms.CheckBox();
             this.checkBoxB = new System.Windows.Forms.CheckBox();
             this.checkBoxA = new System.Windows.Forms.CheckBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.btnprev = new System.Windows.Forms.Button();
+            this.btnnext = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(22, 21);
+            this.label3.Location = new System.Drawing.Point(23, 26);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(77, 25);
@@ -59,16 +60,16 @@
             // 
             // macauhoi
             // 
+            this.macauhoi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.macauhoi.Location = new System.Drawing.Point(107, 24);
             this.macauhoi.Name = "macauhoi";
-            this.macauhoi.ReadOnly = true;
-            this.macauhoi.Size = new System.Drawing.Size(100, 22);
+            this.macauhoi.Size = new System.Drawing.Size(146, 27);
             this.macauhoi.TabIndex = 27;
             // 
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(524, 458);
+            this.button2.Location = new System.Drawing.Point(523, 452);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(137, 44);
@@ -192,37 +193,47 @@
             this.checkBoxA.UseVisualStyleBackColor = true;
             this.checkBoxA.CheckedChanged += new System.EventHandler(this.checkBoxA_CheckedChanged);
             // 
-            // button1
+            // button4
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(106, 458);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(137, 44);
-            this.button1.TabIndex = 29;
-            this.button1.Text = "Câu trước ";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Location = new System.Drawing.Point(259, 24);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(141, 29);
+            this.button4.TabIndex = 31;
+            this.button4.Text = "Tìm câu hỏi";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // button3
+            // btnprev
             // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(307, 458);
-            this.button3.Margin = new System.Windows.Forms.Padding(4);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(137, 44);
-            this.button3.TabIndex = 30;
-            this.button3.Text = "Câu sau ";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btnprev.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnprev.Location = new System.Drawing.Point(151, 452);
+            this.btnprev.Name = "btnprev";
+            this.btnprev.Size = new System.Drawing.Size(132, 44);
+            this.btnprev.TabIndex = 32;
+            this.btnprev.Text = "Câu trước";
+            this.btnprev.UseVisualStyleBackColor = true;
+            this.btnprev.Click += new System.EventHandler(this.btnprev_Click);
+            // 
+            // btnnext
+            // 
+            this.btnnext.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnnext.Location = new System.Drawing.Point(303, 452);
+            this.btnnext.Name = "btnnext";
+            this.btnnext.Size = new System.Drawing.Size(132, 44);
+            this.btnnext.TabIndex = 33;
+            this.btnnext.Text = "Câu sau";
+            this.btnnext.UseVisualStyleBackColor = true;
+            this.btnnext.Click += new System.EventHandler(this.btnnext_Click_1);
             // 
             // XemSuadethi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 538);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(828, 538);
+            this.Controls.Add(this.btnnext);
+            this.Controls.Add(this.btnprev);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.macauhoi);
             this.Controls.Add(this.button2);
@@ -262,7 +273,8 @@
         private System.Windows.Forms.CheckBox checkBoxC;
         private System.Windows.Forms.CheckBox checkBoxB;
         private System.Windows.Forms.CheckBox checkBoxA;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnprev;
+        private System.Windows.Forms.Button btnnext;
     }
 }

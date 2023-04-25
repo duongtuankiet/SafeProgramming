@@ -147,7 +147,6 @@
             this.label1.Size = new System.Drawing.Size(107, 31);
             this.label1.TabIndex = 9;
             this.label1.Text = "Câu hỏi";
-
             // 
             // label2
             // 
@@ -159,7 +158,6 @@
             this.label2.Size = new System.Drawing.Size(101, 31);
             this.label2.TabIndex = 10;
             this.label2.Text = "Đáp án";
-
             // 
             // button2
             // 
@@ -179,7 +177,6 @@
             this.macauhoi.Name = "macauhoi";
             this.macauhoi.Size = new System.Drawing.Size(100, 22);
             this.macauhoi.TabIndex = 13;
-
             // 
             // label3
             // 

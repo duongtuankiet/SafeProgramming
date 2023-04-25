@@ -1,14 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ThuVienHam;
 
@@ -55,25 +47,6 @@ namespace App
                 // Hiển thị thông tin các trường dữ liệu khác tương ứng với bảng
             }
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (currentIndex > 0)
-            {
-                currentIndex--;
-                ShowRecord(currentIndex);
-            }
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            if (currentIndex < dataTable.Rows.Count - 1)
-            {
-                currentIndex++;
-                ShowRecord(currentIndex);
-            }
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
             string cauHoi = cauhoi.Text;
@@ -129,7 +102,9 @@ namespace App
             SqlConnection con = new SqlConnection();
             con.ConnectionString = App.Properties.Settings.Default.connectionstring;
             con.Open();
-            SqlCommand command = new SqlCommand("select * from Dethi where macauhoi = '" + tv.mahoa(maCauHoi) + "' ", con);
+            SqlCommand command = new SqlCommand("select * from Dethi where macauhoi = @Macauhoi", con);
+            command.Parameters.Add("@hashcode", SqlDbType.NVarChar, 200).Value = tv.mahoa(maCauHoi);
+            command.Prepare();
             var reader = command.ExecuteReader();
             if (reader.HasRows)
             {
@@ -191,6 +166,52 @@ namespace App
                 checkBoxB.Checked = false;
                 checkBoxC.Checked = false;
                 checkBoxA.Checked = false;
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = App.Properties.Settings.Default.connectionstring;
+            con.Open();
+            string mach = macauhoi.Text;
+            SqlCommand command = new SqlCommand("select * from Dethi where macauhoi = @macauhoi", con);
+            command.Parameters.Add("@macauhoi", SqlDbType.NVarChar, 200).Value = tv.mahoa(mach);
+            command.Prepare();
+            var reader = command.ExecuteReader();
+            if (reader.HasRows)
+            {               
+                reader.Read();              
+                macauhoi.Text = tv.giaima(reader["macauhoi"].ToString());
+                cauhoi.Text = tv.giaima(reader["cauhoi"].ToString());
+                textBoxA.Text = tv.giaima(reader["dapan1"].ToString());
+                textBoxB.Text = tv.giaima(reader["dapan2"].ToString());
+                textBoxC.Text = tv.giaima(reader["dapan3"].ToString());
+                textBoxD.Text = tv.giaima(reader["dapan4"].ToString());               
+            }
+            else
+            {
+                MessageBox.Show("Không tìm thấy câu hỏi, hoặc bạn không có quyền hạn", "Thông báo");
+            }                
+           
+
+        }
+
+        private void btnprev_Click(object sender, EventArgs e)
+        {
+            if (currentIndex > 0)
+            {
+                currentIndex--;
+                ShowRecord(currentIndex);
+            }
+        }
+
+        private void btnnext_Click_1(object sender, EventArgs e)
+        {
+            if (currentIndex < dataTable.Rows.Count - 1)
+            {
+                currentIndex++;
+                ShowRecord(currentIndex);
             }
         }
     }
