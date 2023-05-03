@@ -37,6 +37,7 @@ namespace App
             var reader = cmd.ExecuteReader();
             if (reader.HasRows)
             {
+                
                 reader.Read();
                 string flag = (string)reader["flag"];
                 if (flag == "-1") 
@@ -67,6 +68,42 @@ namespace App
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string hoten = textBox1.Text;
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = App.Properties.Settings.Default.connectionstring;
+            con.Open();
+            SqlCommand cmd = new SqlCommand();
+            SqlCommand cmd2 = new SqlCommand();
+            cmd.Connection = con;
+            cmd2.Connection = con;
+            string sql = "select * from users where username = @username";
+            cmd.CommandText = sql;
+            cmd.Parameters.Add("@username", SqlDbType.NVarChar, 200).Value = hoten;
+            cmd.Prepare();
+            var reader = cmd.ExecuteReader();
+            if (reader.HasRows)
+            {
+                reader.Read();
+                label2.Text = reader["username"].ToString();
+                string ef = reader["flag"].ToString();
+                if (ef == "0") 
+                {
+                    label3.Text = "Bình thường";
+                }
+                else
+                {
+                    label3.Text = "Pay acc";
+                }
+            }
         }
     }
 }

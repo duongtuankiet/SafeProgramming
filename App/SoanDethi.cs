@@ -12,7 +12,6 @@ namespace Buoi2_LapTrinhAnToan
         string logonname;
         public SoanDethi(string uname)
         {
-
             InitializeComponent();
             logonname = uname;
         }
@@ -80,7 +79,7 @@ namespace Buoi2_LapTrinhAnToan
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
 
-            SqlCommand command = new SqlCommand("INSERT INTO Dethi(cauhoi, dapan1, dapan2, dapan3, dapan4, dapandung, macauhoi) VALUES (@CauHoi, @DapAn1, @DapAn2, @DapAn3, @DapAn4, @DapAnDung, @MaCauHoi)", con);
+            SqlCommand command = new SqlCommand("INSERT INTO Dethi(cauhoi, dapan1, dapan2, dapan3, dapan4, dapandung, macauhoi, groups) VALUES (@CauHoi, @DapAn1, @DapAn2, @DapAn3, @DapAn4, @DapAnDung, @MaCauHoi, @Groups)", con);
             command.Parameters.AddWithValue("@CauHoi", tv.mahoa(cauHoi));
             command.Parameters.AddWithValue("@DapAn1", tv.mahoa(dapAn1));
             command.Parameters.AddWithValue("@DapAn2", tv.mahoa(dapAn2));
@@ -88,6 +87,7 @@ namespace Buoi2_LapTrinhAnToan
             command.Parameters.AddWithValue("@DapAn4", tv.mahoa(dapAn4));
             command.Parameters.AddWithValue("@DapAnDung", tv.mahoa(dapAnDung));
             command.Parameters.AddWithValue("@MaCauHoi", tv.mahoa(maCauHoi));
+            command.Parameters.AddWithValue("@Groups", logonname);
             int result = command.ExecuteNonQuery();
             con.Close();
 

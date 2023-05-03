@@ -11,8 +11,10 @@ namespace App
         Thuvien tv = new Thuvien();
         private DataTable dataTable;
         private int currentIndex;
-        public XemSuadethi()
+        string logonname;
+        public XemSuadethi(string uname)
         {
+            logonname = uname;
             InitializeComponent();
         }
 
@@ -21,7 +23,7 @@ namespace App
             SqlConnection con = new SqlConnection();
             con.ConnectionString = App.Properties.Settings.Default.connectionstring;
             con.Open();
-            string query = "SELECT * FROM Dethi";
+            string query = "SELECT * FROM Dethi where groups like '%" + logonname + "%'";
             SqlDataAdapter adapter = new SqlDataAdapter(query, con);
             dataTable = new DataTable();
             adapter.Fill(dataTable);
@@ -102,8 +104,9 @@ namespace App
             SqlConnection con = new SqlConnection();
             con.ConnectionString = App.Properties.Settings.Default.connectionstring;
             con.Open();
-            SqlCommand command = new SqlCommand("select * from Dethi where macauhoi = @Macauhoi", con);
-            command.Parameters.Add("@hashcode", SqlDbType.NVarChar, 200).Value = tv.mahoa(maCauHoi);
+            SqlCommand command = new SqlCommand("select * from Dethi where macauhoi = @Macauhoi and groups like @Logname%", con);
+            command.Parameters.Add("@Macauhoi", SqlDbType.NVarChar, 200).Value = tv.mahoa(maCauHoi);
+            command.Parameters.Add("@Logname", SqlDbType.NVarChar, 200).Value = "%" + logonname + "%";
             command.Prepare();
             var reader = command.ExecuteReader();
             if (reader.HasRows)
@@ -111,12 +114,13 @@ namespace App
                 con.Close();
                 con.Open();
                 
-                SqlCommand cmand = new SqlCommand("UPDATE Dethi SET macauhoi = @MaCauHoi, cauhoi = @CauHoi, dapan1 = @DapAn1, dapan2 = @DapAn2, dapan3 = @DapAn3, dapan4 = @DapAn4, dapandung = @DapAnDung WHERE macauhoi = @MaCauHoi" , con);
+                SqlCommand cmand = new SqlCommand("UPDATE Dethi SET macauhoi = @MaCauHoi, groups = @Groups, cauhoi = @CauHoi, dapan1 = @DapAn1, dapan2 = @DapAn2, dapan3 = @DapAn3, dapan4 = @DapAn4, dapandung = @DapAnDung WHERE macauhoi = @MaCauHoi" , con);
                 cmand.Parameters.AddWithValue("@CauHoi", tv.mahoa(cauHoi));
                 cmand.Parameters.AddWithValue("@DapAn1", tv.mahoa(dapAn1));
                 cmand.Parameters.AddWithValue("@DapAn2", tv.mahoa(dapAn2));
                 cmand.Parameters.AddWithValue("@DapAn3", tv.mahoa(dapAn3));
                 cmand.Parameters.AddWithValue("@DapAn4", tv.mahoa(dapAn4));
+                cmand.Parameters.AddWithValue("@Groups", logonname);
                 cmand.Parameters.AddWithValue("@DapAnDung", tv.mahoa(dapAnDung));
                 cmand.Parameters.AddWithValue("@MaCauHoi", tv.mahoa(maCauHoi));
                 cmand.ExecuteNonQuery();
@@ -175,8 +179,9 @@ namespace App
             con.ConnectionString = App.Properties.Settings.Default.connectionstring;
             con.Open();
             string mach = macauhoi.Text;
-            SqlCommand command = new SqlCommand("select * from Dethi where macauhoi = @macauhoi", con);
+            SqlCommand command = new SqlCommand("select * from Dethi where macauhoi = @macauhoi and groups like @Logname", con);
             command.Parameters.Add("@macauhoi", SqlDbType.NVarChar, 200).Value = tv.mahoa(mach);
+            command.Parameters.Add("@Logname", SqlDbType.NVarChar, 200).Value = "%" + logonname + "%";
             command.Prepare();
             var reader = command.ExecuteReader();
             if (reader.HasRows)

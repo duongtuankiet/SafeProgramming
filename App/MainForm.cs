@@ -118,7 +118,7 @@ namespace App
 
         private void xemĐềToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            XemSuadethi x = new XemSuadethi();
+            XemSuadethi x = new XemSuadethi(logonname);
             x.ShowDialog();
         }
 
@@ -130,7 +130,7 @@ namespace App
 
         private void đềThiCơSởDữLiệuToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SoanDethi form = new SoanDethi();
+            SoanDethi form = new SoanDethi(logonname);
             form.Show();
         }
 
