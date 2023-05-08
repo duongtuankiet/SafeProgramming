@@ -41,14 +41,14 @@ namespace Buoi2_LapTrinhAnToan
             
             string hoten = textBox1.Text;
             string pass = textBox2.Text;
-            string hashcode = tv.hashstring(pass, "SHA512");
+            string hashcode = tv.mahoa(tv.hashstring(pass, "SHA512"));
             SqlConnection con = new SqlConnection();
             con.ConnectionString = App.Properties.Settings.Default.connectionstring;
             con.Open();
             SqlCommand cmd1 = new SqlCommand();
             cmd1.Connection = con;
-            cmd1.Parameters.Add("@hoten", SqlDbType.NVarChar, 200).Value = hoten;
-            cmd1.Parameters.Add("@hashcode", SqlDbType.NVarChar, 200).Value = hashcode;
+            cmd1.Parameters.Add("@hoten", SqlDbType.NVarChar, 2000).Value = hoten;
+            cmd1.Parameters.Add("@hashcode", SqlDbType.NVarChar, 2000).Value = hashcode;
             string sql1 = "select * from users where username = @hoten ";
             cmd1.CommandText = sql1;
             cmd1.Prepare();
@@ -65,7 +65,7 @@ namespace Buoi2_LapTrinhAnToan
                 }
                 else
                 {
-                    string pas = tv.giaima((string)reader1["password"]);
+                    string pas = (string)reader1["password"];
                     if (hashcode != pas)
                     {
                         //hien thong bao bang messagebox khi that bai

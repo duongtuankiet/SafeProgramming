@@ -64,7 +64,7 @@ namespace App
 
         private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Dangnhap dn = new Dangnhap();  
+            Dangnhap dn = new Dangnhap();
             dn.Show();
             this.Close();
         }
@@ -79,28 +79,28 @@ namespace App
         {
             Dangky form = new Dangky();
             form.ShowDialog();
-            
+
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            if(groups == "admin")
+            if (groups == "admin")
             {
             }
-            if(groups == "giao vien")
-            {
-                đăngKýUserMớiToolStripMenuItem.Visible = false;
-                đổiMậtKhẩuUserToolStripMenuItem.Visible=false;
-                khôiPhụcTàiKhoảnToolStripMenuItem.Visible=false;
-                viewMenu.Visible=false;
-            }
-            if(groups =="hoc sinh")
+            if (groups == "giao vien")
             {
                 đăngKýUserMớiToolStripMenuItem.Visible = false;
                 đổiMậtKhẩuUserToolStripMenuItem.Visible = false;
                 khôiPhụcTàiKhoảnToolStripMenuItem.Visible = false;
-                toolsMenu.Visible=false;
-                editMenu.Visible=false;
+                viewMenu.Visible = false;
+            }
+            if (groups == "hoc sinh")
+            {
+                đăngKýUserMớiToolStripMenuItem.Visible = false;
+                đổiMậtKhẩuUserToolStripMenuItem.Visible = false;
+                khôiPhụcTàiKhoảnToolStripMenuItem.Visible = false;
+                toolsMenu.Visible = false;
+                editMenu.Visible = false;
             }
         }
 

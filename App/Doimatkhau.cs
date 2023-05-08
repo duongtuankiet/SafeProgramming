@@ -78,18 +78,18 @@ namespace App
                 cmd2.Connection = con;
                 string sql = "select username from users where username = @username";             
                 cmd.CommandText = sql;
-                cmd.Parameters.Add("@username", SqlDbType.NVarChar, 200).Value = username;
+                cmd.Parameters.Add("@username", SqlDbType.NVarChar, 2000).Value = username;
                 cmd.Prepare();
                 var reader = cmd.ExecuteReader();
                 if (reader.HasRows)
                 {
                     con.Close();
                     con.Open();
-                    string hashpass = tv.hashstring(password, "SHA512");
+                    string hashpass = tv.mahoa(tv.hashstring(password, "SHA512"));
                     string sql2 = "UPDATE users SET password = @hashpass where username = @username";
                     cmd2.CommandText = sql2;
-                    cmd2.Parameters.Add("@hashpass", SqlDbType.NVarChar, 200).Value = hashpass;
-                    cmd2.Parameters.Add("@username", SqlDbType.NVarChar, 200).Value = username;
+                    cmd2.Parameters.Add("@hashpass", SqlDbType.NVarChar, 2000).Value = hashpass;
+                    cmd2.Parameters.Add("@username", SqlDbType.NVarChar, 2000).Value = username;
                     cmd2.Prepare();
                     cmd2.ExecuteNonQuery();
                     string message = "Đổi mật khẩu thành công";

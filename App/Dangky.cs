@@ -58,10 +58,10 @@ namespace Buoi2_LapTrinhAnToan
                         sql = "INSERT INTO users (username, password, role, flag) VALUES (@username, @password, @role, @flag)";
                         cmd2.CommandText = sql;
                         
-                        cmd2.Parameters.Add("@username", SqlDbType.NVarChar, 200).Value = hoten;
-                        cmd2.Parameters.Add("@password", SqlDbType.NVarChar, 200).Value = psw;
-                        cmd2.Parameters.Add("@role", SqlDbType.NVarChar, 200).Value = role;
-                        cmd2.Parameters.Add("@flag", SqlDbType.NVarChar, 200).Value = flag;
+                        cmd2.Parameters.Add("@username", SqlDbType.NVarChar, 2000).Value = hoten;
+                        cmd2.Parameters.Add("@password", SqlDbType.NVarChar, 2000).Value = psw;
+                        cmd2.Parameters.Add("@role", SqlDbType.NVarChar, 2000).Value = role;
+                        cmd2.Parameters.Add("@flag", SqlDbType.NVarChar, 2000).Value = flag;
                         cmd2.Prepare();
                         cmd2.ExecuteNonQuery();
                         string message = "Đăng ký thành công";
