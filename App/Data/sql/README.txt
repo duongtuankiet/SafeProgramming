@@ -1,4 +1,4 @@
-nếu chưa có database tracnghiem : chạy createdtb.sql
-nếu chưa có table users : chạy createtbUsers.sql
-nếu chưa có table Dethi : chạy createtbDethi.sql
-import 200 câu hỏi trắc nghiệm : bo200cauhoi.sql
+Tạo database tracnghiem: chạy createdtb.sql
+Tạo table users: chạy createtbUsers.sql
+Tạo table Dethi: chạy createtbDethi.sql
+Import 200 câu hỏi trắc nghiệm: bo200cauhoi.sql
